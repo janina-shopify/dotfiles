@@ -1,24 +1,3 @@
-# Prompt
-
-# Keep it simple when Emacs is connecting
-
-if [[ "$TERM" == "dumb" ]]
-then
-  unsetopt zle
-  unsetopt prompt_cr
-  unsetopt prompt_subst
-  if whence -w precmd >/dev/null; then
-      unfunction precmd
-  fi
-  if whence -w preexec >/dev/null; then
-      unfunction preexec
-  fi
-  PS1='$ '
-  return
-fi
-
-# Interactive prompt
-
 autoload -Uz vcs_info
 precmd_functions+=( vcs_info )
 setopt prompt_subst
@@ -29,7 +8,7 @@ zstyle ':vcs_info:*' stagedstr '+'
 zstyle ':vcs_info:git:*' formats '%F{200}[%b%u%c]%f'
 zstyle ':vcs_info:*' enable git
 
-PROMPT='%(?.%F{green}√.%F{red}?%?)%f %B%~%b $vcs_info_msg_0_ $ '
+PROMPT='%F{green}%m%F %B%~%b $vcs_info_msg_0_ $ '
 if [ $SPIN ]; then
     export PROMPT=$(echo $PROMPT | sed 's/➜/⥁/g')
 fi
