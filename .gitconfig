@@ -1,0 +1,6 @@
+[user]
+        name = Janina Lynne Szkut
+        email = janina.szkut@shopify.com
+        signingkey = 3A99CDAC74760FBA5D51D6CD1EDEF0EC5E79193D
+[commit]
+        gpgsign = true
